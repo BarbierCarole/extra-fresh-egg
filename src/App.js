@@ -5,6 +5,7 @@ import 'moment/locale/fr';
 import moment from 'moment';
 import { useForm } from './useForm';
 import eggs from './img/eggs.png';
+import './App.css';
 
 function App() {  
  
@@ -38,17 +39,23 @@ function App() {
           <h1>Mes &#339;ufs sont-ils extra-frais ?</h1>
           <p>Veuillez saisir la date de consommation recommandée (DCR)<br />
           La DCR est la date écrite sur l'&#339;uf</p>
-         
-          <label htmlFor="day">Jour </label>
-          <input type="number" id="day" name="day" min="1" max="31" placeholder="jour" onChange={handleChange}/><br />
-          <label htmlFor="month">Mois </label>
-          <input type="number" id="month" name="month" min="1" max="12" placeholder="mois" onChange={handleChange} /><br />
-          <label htmlFor="year">Année </label>
-          <input type="number" id="year" name="year" min="2021" max="2040" value={values.year} placeholder="année" onChange={handleChange} /><br />
-
+          <div className="App-container">
+            <div className="App-content">
+              {/* <label htmlFor="day">Jour </label> */}
+              <input type="number" id="day" name="day" min="1" max="31" placeholder="jour" onChange={handleChange}/>
+            </div>
+            <div className="App-content">
+              {/* <label htmlFor="month">Mois </label> */}
+              <input type="number" id="month" name="month" min="1" max="12" placeholder="mois" onChange={handleChange} />
+            </div>
+            <div className="App-content">
+              {/* <label htmlFor="year">Année </label> */}
+              <input type="number" id="year" name="year" min="2021" max="2040" value={values.year} placeholder="année" onChange={handleChange} />
+            </div>
+          </div>                    
           {/* { dateIsValid ? <div>La date de consommation recommandée est le <Moment format="DD MM YYYY">{dcr}</Moment></div> : ""} */}
 
-          {showExtra ? <div> Mon &#339;uf est extra frais du <br/><Moment format="D MMM YYYY">{datePonte}</Moment> au <Moment format="D MMM YYYY">{dateLimiteExtra}</Moment></div>   : "Mon œuf n'est plus extra-frais '("}<br />
+          {showExtra ? <div> Mes &#339;ufs sont extra-frais du <br/><Moment format="D MMM YYYY" className="date">{datePonte}</Moment> au <Moment format="D MMM YYYY" className="date">{dateLimiteExtra}</Moment></div>   : "Mon œuf n'est plus extra-frais '("}
           <p>Nous sommes le <Moment format="D MMM YYYY"></Moment> </p>
         </header>       
       </div>      
