@@ -61,7 +61,7 @@ h1 {
 h2 {
   font-family: 'Raleway-Light', sans-serif;
   font-size: calc(16px + 2vmin);
-  margin: calc(16px + 2vmin) calc(16px + 2vmin) calc(0px + 2vmin) calc(16px + 2vmin) ;
+  margin: 0 calc(16px + 2vmin) calc(0px + 2vmin) calc(16px + 2vmin) ;
 }
 p {
   font-family: 'Raleway-Light', sans-serif;
@@ -93,23 +93,16 @@ input:focus {
   box-shadow: 5px 5px #FB7AA5;
 }
 
-input {
-  /* ...existing styles */
+/* input {
+  
   transition: 180ms box-shadow ease-in-out;
   width: 80px;
   height: 30px;
   font-size: calc(16px + 2vmin);
   text-align: center;
   font-weight: 600;
-}
-.custom-input {
-  transition: 180ms box-shadow ease-in-out;
-  width: 180px;
-  height: 30px;
-  font-size: calc(16px + 2vmin);
-  text-align: center;
-  font-weight: 600;
-}
+} */
+
 /* .input:focus {
   outline: 3px solid transparent;
 } */
