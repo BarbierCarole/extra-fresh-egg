@@ -8,27 +8,33 @@ import eggs from './img/eggs.png';
 import './App.css';
 
 function App() {  
- 
-  
+  function formattedNumber (myNumber) { return ("0" + myNumber).slice(-2); }
+
   const [values, handleChange] = useForm({ 
-    day:"", 
-    month:"", 
+    day:formattedNumber(), 
+    month:formattedNumber(), 
     year:moment().format('YYYY'), 
   });
 
-  const today = new Date();
-  const dcr = values.year+'-'+values.month+'-'+values.day;
+  const now = new Date();  
+  
+  const dcr = moment(values.year+'-'+values.month+'-'+values.day);
+  
   const datePonte = moment(dcr).subtract(28,'days');
   const dateLimiteExtra = moment(dcr).subtract(20,'days');
+
   const [showExtra, setShowExtra] = useState(false);
-  const dateIsValid = moment(dcr).isValid();
+  const [dateIsValid, setDateIsValid] = useState(false);
+  console.log('dateIsValid', dateIsValid);
 
   console.log('Image par <a href="https://pixabay.com/fr/users/vipbum-3582769/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3070850">Hung Nguyen</a> de <a href="https://pixabay.com/fr/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3070850">Pixabay</a>');
- 
+
   useEffect(() => {
-    if (moment(today).isBefore(dateLimiteExtra)) {
+    if (moment(now).isBefore(dateLimiteExtra)) {
         setShowExtra(true)
     } else setShowExtra(false)
+    
+    setDateIsValid(moment(dcr,"YYYY-MM-DD", true).isValid())    
   }, [values])
     
   return (
@@ -37,7 +43,7 @@ function App() {
         <header className="App-header">
           <img src={eggs} width="40%"/>
           <h1>Mes &#339;ufs sont-ils extra-frais ?</h1>
-          <h2>Je saisis la date* écrite sur l'&#339;uf</h2>
+          <h2>Je saisis la date DCR* <br />écrite sur l'&#339;uf</h2>
           <p className='defDcr'>*DCR = Date Limite de Consommation de l'&#339;uf</p>
           <div className="App-container">
             <div className="App-content">
@@ -55,7 +61,21 @@ function App() {
           </div>                    
           {/* { dateIsValid ? <div>La date de consommation recommandée est le <Moment format="DD MM YYYY">{dcr}</Moment></div> : ""} */}
 
-          {showExtra ? <div> Mes &#339;ufs sont extra-frais du <br/><Moment format="D MMM YYYY" className="date">{datePonte}</Moment> au <Moment format="D MMM YYYY" className="date">{dateLimiteExtra}</Moment></div>   : "Mon œuf n'est plus extra-frais ..."}
+          {/* {showExtra ? <div> Mes &#339;ufs sont extra-frais du <br/><Moment format="D MMM YYYY" className="date">{datePonte}</Moment> au <Moment format="D MMM YYYY" className="date">{dateLimiteExtra}</Moment></div>   : <div> Mes &#339;ufs ne sont plus extra-frais </div>} */}
+
+          {(() => {
+            if (dateIsValid) {
+              if(showExtra) {
+                return (
+                  <div className="messageResult"> Mes &#339;ufs sont extra-frais du <br/><Moment format="D MMM YYYY" className="date">{datePonte}</Moment> au <Moment format="D MMM YYYY" className="date">{dateLimiteExtra}</Moment></div>
+                )
+              }
+              return (
+                <div className="messageResult"> Mes &#339;ufs <span className='bold'>ne sont plus </span> extra-frais </div>
+              )
+            }
+            })()} 
+        
           <p>Nous sommes le <Moment format="D MMM YYYY"></Moment> </p>
          
         </header>       
