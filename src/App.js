@@ -54,15 +54,15 @@ function App() {
           <div className="App-container">
             <div className="App-content">
               {/* <label htmlFor="day">Jour </label> */}
-              <input type="number" id="day" name="day" min="1" max="31" placeholder="jour" onChange={handleChange} className="input" onfocus="blur();"/>
+              <input type="number" id="day" name="day" min="1" max="31" placeholder="jour" onChange={handleChange} className="input"/>
             </div>
             <div className="App-content">
               {/* <label htmlFor="month">Mois </label> */}
-              <input type="number" id="month" name="month" min="1" max="12" placeholder="mois" onChange={handleChange} className="input" onfocus="blur();"/>
+              <input type="number" id="month" name="month" min="1" max="12" placeholder="mois" onChange={handleChange} className="input"/>
             </div>
             <div className="App-content">
               {/* <label htmlFor="year">Année </label> */}
-              <input type="number" id="year" name="year" min="2021" max="2040" value={values.year} placeholder="année" onChange={handleChange} className="input" onfocus="blur();"/>
+              <input type="number" id="year" name="year" min="2021" max="2040" value={values.year} placeholder="année" onChange={handleChange} className="input"/>
             </div>
           </div>                    
           {/* { dateIsValid ? <div>La date de consommation recommandée est le <Moment format="DD MM YYYY">{dcr}</Moment></div> : ""} */}
