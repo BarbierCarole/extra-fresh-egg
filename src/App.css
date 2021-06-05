@@ -2,13 +2,6 @@
   text-align: center;
 }
 
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -22,15 +15,6 @@
 
 .App-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 /* -------- CB ---------
@@ -55,7 +39,42 @@
   
 }
 
+/* style font
+*/
+@font-face {
+  font-family: 'ZCOOLKuaiLe-Regular';
+  src: url('./styles/font/ZCOOLKuaiLe-Regular.ttf');
+  /* font-family: 'Raleway-Light', sans-serif;
+  src: url('./styles/font/Raleway-Light.ttf'); */
+}
 
+body {
+  font-family: 'Raleway-Light', sans-serif;
+} 
+h1 {
+  font-family: 'ZCOOLKuaiLe-Regular', sans-serif;
+  font-size: calc(24px + 2vmin);
+  
+  margin: calc(30px + 2vmin);
+}
+h2 {
+  font-family: 'Raleway-Light', sans-serif;
+  font-size: calc(16px + 2vmin);
+  margin: calc(16px + 2vmin) calc(16px + 2vmin) calc(0px + 2vmin) calc(16px + 2vmin) ;
+}
+p {
+  font-family: 'Raleway-Light', sans-serif;
+  font-size: calc(12px + 2vmin);
+}
+input {
+  font-size: calc(16px + 2vmin);
+}
+.defDcr {
+  font-size: calc(6px + 2vmin);
+  margin-bottom: calc(8px + 2vmin);
+} 
+/* style form 
+*/
 input:focus {
   /* ...existing styles */
   box-shadow: 5px 5px #FB7AA5;
@@ -65,7 +84,10 @@ input {
   /* ...existing styles */
   transition: 180ms box-shadow ease-in-out;
   width: 80px;
-  height: 25px;
+  height: 30px;
+  font-size: calc(16px + 2vmin);
+  text-align: center;
+  font-weight: 600;
 }
 /* .input:focus {
   outline: 3px solid transparent;
