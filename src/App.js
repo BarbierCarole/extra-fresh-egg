@@ -23,6 +23,16 @@ function App() {
   const datePonte = moment(dcr).subtract(28,'days');
   const dateLimiteExtra = moment(dcr).subtract(20,'days');
 
+  const nowFormated= moment(now,"YYYY-MM-DD");
+  const dateLimiteExtraFormated = moment(dcr,"YYYY-MM-DD").subtract(20,'days');
+
+  const diffDayNotExtra = (moment(dateLimiteExtraFormated).diff(nowFormated, 'days'))*-1;
+  console.log('dateLimiteExtra => ',dateLimiteExtra);
+  console.log('now => ', now);
+  console.log('diffDayNotExtra => ',diffDayNotExtra);
+
+
+
   const [showExtra, setShowExtra] = useState(false);
   const [dateIsValid, setDateIsValid] = useState(false);
   console.log('dateIsValid', dateIsValid);
@@ -71,7 +81,7 @@ function App() {
                 )
               }
               return (
-                <div className="messageResult"> Mes &#339;ufs <span className='bold'>ne sont plus </span> extra-frais </div>
+                <div className="messageResult"> Mes &#339;ufs <span className='bold'>ne sont plus </span> extra-frais depuis {diffDayNotExtra===0 ? "aujourd'hui":''} {diffDayNotExtra===1 ? "hier":''} {diffDayNotExtra>1 ? diffDayNotExtra+" jours":''}</div>
               )
             }
             })()} 
@@ -84,3 +94,5 @@ function App() {
 }
 
 export default App;
+
+
