@@ -26,12 +26,8 @@ function App() {
   const nowFormated= moment(now,"YYYY-MM-DD");
   const dateLimiteExtraFormated = moment(dcr,"YYYY-MM-DD").subtract(20,'days');
 
-  const diffDayNotExtra = (moment(dateLimiteExtraFormated).diff(nowFormated, 'days'))*-1;
-  console.log('dateLimiteExtra => ',dateLimiteExtra);
-  console.log('now => ', now);
-  console.log('diffDayNotExtra => ',diffDayNotExtra);
-
-
+  const diffDay = (moment(dateLimiteExtraFormated).diff(nowFormated, 'days'));
+  const diffDayNotExtra = diffDay*-1;
 
   const [showExtra, setShowExtra] = useState(false);
   const [dateIsValid, setDateIsValid] = useState(false);
@@ -77,7 +73,7 @@ function App() {
             if (dateIsValid) {
               if(showExtra) {
                 return (
-                  <div className="messageResult"> Mes &#339;ufs sont extra-frais du <br/><Moment format="D MMM YYYY" className="date">{datePonte}</Moment> au <Moment format="D MMM YYYY" className="date">{dateLimiteExtra}</Moment></div>
+                  <div className="messageResult"> Mes &#339;ufs sont extra-frais du <br/><Moment format="D MMM YYYY" className="date">{datePonte}</Moment> au <Moment format="D MMM YYYY" className="date">{dateLimiteExtra}</Moment><br /> soit encore {diffDay+1} jours(s)</div>
                 )
               }
               return (
