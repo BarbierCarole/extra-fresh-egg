@@ -102,6 +102,14 @@ input {
   text-align: center;
   font-weight: 600;
 }
+.custom-input {
+  transition: 180ms box-shadow ease-in-out;
+  width: 180px;
+  height: 30px;
+  font-size: calc(16px + 2vmin);
+  text-align: center;
+  font-weight: 600;
+}
 /* .input:focus {
   outline: 3px solid transparent;
 } */
