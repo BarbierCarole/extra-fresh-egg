@@ -7,14 +7,10 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items:center;
+  justify-content:center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 /* -------- CB ---------
@@ -56,11 +52,11 @@ h1 {
   font-family: 'ZCOOLKuaiLe-Regular', sans-serif;
   font-size: calc(24px + 2vmin);
   
-  margin: calc(30px + 2vmin);
+  margin: calc(18px + 2vmin);
 }
 h2 {
   font-family: 'Raleway-Light', sans-serif;
-  font-size: calc(16px + 2vmin);
+  font-size: calc(14px + 2vmin);
   margin: 0 calc(16px + 2vmin) calc(0px + 2vmin) calc(16px + 2vmin) ;
 }
 p {

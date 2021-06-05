@@ -8,6 +8,7 @@ import './App.css';
 import DatePicker,{registerLocale, setDefaultLocale,CalendarContainer} from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import fr from 'date-fns/locale/fr';
+import ReactCircleModal from 'react-circle-modal';
 registerLocale('fr', fr);
 setDefaultLocale('fr');
 
@@ -41,34 +42,46 @@ function App() {
   const [dateIsValid, setDateIsValid] = useState(false);
   console.log('dateIsValid', dateIsValid);
 
-  
     useEffect(() => {
-    if (moment(now).isBefore(dateLimiteExtra)) {
-        setShowExtra(true)
-    } else setShowExtra(false)
-    
-    setDateIsValid(moment(dcr,"YYYY-MM-DD", true).isValid())    
+  if (moment(now).isBefore(dateLimiteExtra)) {
+      setShowExtra(true)
+  } else setShowExtra(false)
+  
+  setDateIsValid(moment(dcr,"YYYY-MM-DD", true).isValid())    
   }, [dcr])
-     
-  
-  
+      
   return (
     
       <div className="App">
         <header className="App-header">
           <img src={eggs} width="40%"/>
           <h1>Mes &#339;ufs sont-ils extra-frais ?</h1>
-          <h2>Je saisis la date DCR* <br />écrite sur l'&#339;uf</h2>
-          <p className='defDcr'>*DCR = Date Limite de Consommation de l'&#339;uf</p>
+          <h2>Je saisis la date &nbsp;  
+          <ReactCircleModal
+            backgroundColor="#FB7AA5"
+            toogleComponent={onClick => (
+              <button onClick={onClick} style={{background:'#FB7AA5', border: 0}}>
+               DCR*
+              </button>
+            )}
+            // Optional fields and their default values
+            offsetX={0}
+            offsetY={0}
+          >
+            {(onClick) => (
+              <div style={{ backgroundColor: '#fff', padding: '1em' }}>
+                <p className='defDcr'>
+                  *DCR = Date Limite de Consommation de l'&#339;uf
+                </p>
+                <button onClick={onClick}>
+                  Fermer
+                </button>
+              </div>
+            )}
+          </ReactCircleModal>
+          <br />écrite sur l'&#339;uf ou la boîte</h2>
           <div>
-            {/* <DatePicker
-              selected={dcr}
-              onChange={(date) => setDcr(date)}
-              locale="fr"
-              inline
-              calendarStartDay={1}
-            /> */}
-            
+                       
             <DatePicker
               selected={dcr}
               onChange={(date) => setDcr(date)}
