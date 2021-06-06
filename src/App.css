@@ -75,18 +75,18 @@ input {
   padding: 20px;
   margin: 0 20px 20px 20px;
   border-radius: 5px;
-  border-color: #FB7AA5;
-  border: solid 1px #FB7AA5;
+  border-color: #ffb8a7;
+  border: solid 1px #ffb8a7;
 }
 .bold {
   font-weight: bold;
-  color:#ff9bbd;
+  color:#ffb8a7;
 }
 /* style form 
 */
 input:focus {
   /* ...existing styles */
-  box-shadow: 5px 5px #FB7AA5;
+  box-shadow: 5px 5px #ffb8a7;
 }
 
 /* input {

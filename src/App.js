@@ -1,4 +1,6 @@
 import React, { useState, useEffect} from 'react';
+import useModal from "./useModal";
+import Modal from "./modal";
 import './App.css';
 import Moment from 'react-moment';
 import 'moment/locale/fr';
@@ -8,7 +10,7 @@ import './App.css';
 import DatePicker,{registerLocale, setDefaultLocale,CalendarContainer} from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import fr from 'date-fns/locale/fr';
-import ReactCircleModal from 'react-circle-modal';
+// import ReactCircleModal from 'react-circle-modal';
 registerLocale('fr', fr);
 setDefaultLocale('fr');
 
@@ -21,7 +23,7 @@ function App() {
   const [dcr, setDcr] = useState(new Date());
   const MyContainer = ({ className, children }) => {
     return (
-      <div style={{ padding: "1px", background: "#FB7AA5", color: "#fff" }}>
+      <div style={{ padding: "1px", background: "#8F675D", color: "#fff" }}>
         <CalendarContainer className={className}>
           <div style={{ position: "relative" }}>{children}</div>
         </CalendarContainer>
@@ -42,7 +44,9 @@ function App() {
   const [dateIsValid, setDateIsValid] = useState(false);
   console.log('dateIsValid', dateIsValid);
 
-    useEffect(() => {
+  const { isShowing, toggle } = useModal();
+
+  useEffect(() => {
   if (moment(now).isBefore(dateLimiteExtra)) {
       setShowExtra(true)
   } else setShowExtra(false)
@@ -57,28 +61,29 @@ function App() {
           <img src={eggs} width="40%"/>
           <h1>Mes &#339;ufs sont-ils extra-frais ?</h1>
           <h2>Je saisis la date &nbsp;  
-          <ReactCircleModal
-            backgroundColor="#FB7AA5"
-            toogleComponent={onClick => (
-              <button onClick={onClick} style={{background:'#FB7AA5', border: 0}}>
-               DCR*
-              </button>
-            )}
-            // Optional fields and their default values
-            offsetX={0}
-            offsetY={0}
-          >
-            {(onClick) => (
-              <div style={{ backgroundColor: '#fff', padding: '1em' }}>
-                <p className='defDcr'>
-                  *DCR = Date Limite de Consommation de l'&#339;uf
-                </p>
-                <button onClick={onClick}>
-                  Fermer
-                </button>
-              </div>
-            )}
-          </ReactCircleModal>
+          
+          {/* ######## MODALE ########## */}
+          <button className="modal-toggle" onClick={toggle}>
+           DCR*(?)
+          </button>
+
+          <Modal isShowing={isShowing} hide={toggle} />
+          
+
+          <style jsx="true">{`
+            button.modal-toggle {
+              border: 1px dashed #ffb8a7;
+              background: transparent;
+              cursor: pointer;
+              {/* padding: .5rem .5rem; */}
+              text-transform: uppercase;
+              color: #ffb8a7;
+              font-family: 'Raleway-Light', sans-serif;
+              font-size: calc(14px + 2vmin);
+            }
+          `}</style>
+          {/* ########################## */}
+
           <br />écrite sur l'&#339;uf ou la boîte</h2>
           <div>
                        
