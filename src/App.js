@@ -7,7 +7,8 @@ import 'moment/locale/fr';
 import moment from 'moment';
 import eggs from './img/eggs.png';
 import './App.css';
-import DatePicker,{registerLocale, setDefaultLocale,CalendarContainer} from 'react-datepicker';
+import DatePicker,{registerLocale, setDefaultLocale } from 'react-datepicker';
+import { addDays } from 'date-fns';
 import "react-datepicker/dist/react-datepicker.css";
 import fr from 'date-fns/locale/fr';
 // import ReactCircleModal from 'react-circle-modal';
@@ -20,16 +21,17 @@ function App() {
 
 
   const now = new Date();  
-  const [dcr, setDcr] = useState(new Date());
-  const MyContainer = ({ className, children }) => {
-    return (
-      <div style={{ padding: "1px", background: "#8F675D", color: "#fff" }}>
-        <CalendarContainer className={className}>
-          <div style={{ position: "relative" }}>{children}</div>
-        </CalendarContainer>
-      </div>
-    );
-  };
+  // const [dcr, setDcr] = useState(new Date());
+  const [dcr, setDcr] = useState(null);
+  // const MyContainer = ({ className, children }) => {
+  //   return (
+  //     <div>
+  //       <CalendarContainer className={className}>
+  //         <div style={{ position: "relative" }}>{children}</div>
+  //       </CalendarContainer>
+  //     </div>
+  //   );
+  // };
   
   const datePonte = moment(dcr).subtract(28,'days');
   const dateLimiteExtra = moment(dcr).subtract(20,'days');
@@ -58,62 +60,79 @@ function App() {
     
       <div className="App">
         <header className="App-header">
-          <img src={eggs} width="40%"/>
+          <img src={eggs} width="60%" />
           <h1>Mes &#339;ufs sont-ils extra-frais ?</h1>
-          <h2>Je saisis la date &nbsp;  
-          
-          {/* ######## MODALE ########## */}
-          <button className="modal-toggle" onClick={toggle}>
-           DCR*(?)
-          </button>
+        </header>
+        <section className="App-section">
+          <article>
+            <p><em className="number">1</em><br />Je saisis sur la date  &nbsp;  
+            
+            <button className="modal-toggle" onClick={toggle}>
+            ?
+            </button><br />
+            <Modal isShowing={isShowing} hide={toggle} />
 
-          <Modal isShowing={isShowing} hide={toggle} />
-          
-
-          <style jsx="true">{`
-            button.modal-toggle {
-              border: 1px dashed #ffb8a7;
-              background: transparent;
-              cursor: pointer;
-              {/* padding: .5rem .5rem; */}
-              text-transform: uppercase;
-              color: #ffb8a7;
-              font-family: 'Raleway-Light', sans-serif;
-              font-size: calc(14px + 2vmin);
-            }
-          `}</style>
-          {/* ########################## */}
-
-          <br />écrite sur l'&#339;uf ou la boîte</h2>
-          <div>
+            écrite sur l'&#339;uf ou la boîte<br/><em className="arrow">↓</em></p>
+          </article>
+          <article>
+            <div>
                        
-            <DatePicker
-              selected={dcr}
-              onChange={(date) => setDcr(date)}
-              calendarContainer={MyContainer}
-              locale="fr"
-              inline
-              calendarStartDay={1}
-            />
-           
-          </div>                  
-          
-          {(() => {
-            if (dateIsValid) {
-              if(showExtra) {
+              {/* <DatePicker
+                selected={dcr}
+                onChange={(date) => setDcr(date)}
+                calendarContainer={MyContainer}
+                locale="fr"
+                inline
+                calendarStartDay={1}
+              /> */}
+              
+              <DatePicker
+                selected={dcr}
+                onChange={(date) => setDcr(date)}
+                minDate={new Date()}
+                maxDate={addDays(new Date(), 28)}
+                locale="fr"                
+                placeholderText="Je saisis ici"
+                calendarStartDay={1}
+                dateFormat="dd/MM/yyyy"
+                showDisabledMonthNavigation
+                disabledKeyboardNavigation
+              />
+            
+            </div>                  
+            
+            {(() => {
+              if (dateIsValid) {
+                if(showExtra) {
+                  return (
+                    <div>
+                      <p>
+                        <em className="number">2</em><br />                       
+                        Réponse
+                      </p>
+                      <div className="messageResult"> ! Extra-frais du <br/><Moment format="D MMM YYYY" className="date">{datePonte}</Moment><br />au <Moment format="D MMM YYYY" className="date">{dateLimiteExtra}</Moment><br /> soit encore <span className="date">{diffDay+1}</span> jour(s)
+                      </div>
+                      
+                    </div>
+                  )
+                }
                 return (
-                  <div className="messageResult"> Mes &#339;ufs sont extra-frais du <br/><Moment format="D MMM YYYY" className="date">{datePonte}</Moment> au <Moment format="D MMM YYYY" className="date">{dateLimiteExtra}</Moment><br /> soit encore {diffDay+1} jour(s)</div>
+                  <div>
+                    <p>
+                      <em className="number">2</em><br />                       
+                      Réponse
+                    </p>
+                    <div className="messageResult"> Mes &#339;ufs <span className='bold'>ne sont plus </span> extra-frais depuis {diffDayNotExtra===0 ? "aujourd'hui":''} {diffDayNotExtra===1 ? "hier":''} {diffDayNotExtra>1 ? diffDayNotExtra+" jours":''}</div>
+                  </div>
                 )
               }
-              return (
-                <div className="messageResult"> Mes &#339;ufs <span className='bold'>ne sont plus </span> extra-frais depuis {diffDayNotExtra===0 ? "aujourd'hui":''} {diffDayNotExtra===1 ? "hier":''} {diffDayNotExtra>1 ? diffDayNotExtra+" jours":''}</div>
-              )
-            }
-            })()} 
-        
-          <p>Nous sommes le <Moment format="D MMM YYYY"></Moment> </p>
+              })()} 
+          
+            {/* <p>Nous sommes le <Moment format="D MMM YYYY"></Moment> </p> */}
+          </article>
+        </section>
          
-        </header>       
+              
       </div>      
   );
 }
