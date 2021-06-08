@@ -126,9 +126,7 @@ input {
   margin: 15px 0;
 }
 
-/* .input:focus {
-  outline: 3px solid transparent;
-} */
+
 .react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
   font-size: 1.3em;
 }
@@ -136,10 +134,14 @@ input {
 .react-datepicker {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.8rem;
-  background-color: rgb(255, 30, 206);
+  background-color: rgb(243, 243, 243);
   color: #000;
   border: 0px;
   border-radius: 0;
   display: inline-block;
   position: relative;
+}
+
+footer {
+  margin: 25px 0;
 }

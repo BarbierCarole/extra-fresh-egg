@@ -17,28 +17,31 @@ setDefaultLocale('fr');
 
 
 function App() {  
+
   console.log('Image par <a href="https://pixabay.com/fr/users/vipbum-3582769/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3070850">Hung Nguyen</a> de <a href="https://pixabay.com/fr/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3070850">Pixabay</a>');
+  console.log('#######################################################');
+  console.log('##                    Carole Barbier                 ##');
+  console.log('##  développeuse full stack JS / React / NodeJs ...  ##');
+  console.log('##                 dans le Var (France)              ##');
+  console.log('## linkedin : https://linkedin.com/in/carole-barbier ##'); 
+  console.log('##    Email : contact@carolebarbier.com              ##');
+  console.log('## Site web : carolebarbier.com (en cours de dév)    ##');
+  console.log('#######################################################');
 
 
   const now = new Date();  
-  // const [dcr, setDcr] = useState(new Date());
+
   const [dcr, setDcr] = useState(null);
-  // const MyContainer = ({ className, children }) => {
-  //   return (
-  //     <div>
-  //       <CalendarContainer className={className}>
-  //         <div style={{ position: "relative" }}>{children}</div>
-  //       </CalendarContainer>
-  //     </div>
-  //   );
-  // };
-  
+
+ 
   const datePonte = moment(dcr).subtract(28,'days');
   const dateLimiteExtra = moment(dcr).subtract(20,'days');
 
   const nowFormated= moment(now,"YYYY-MM-DD");
   const dateLimiteExtraFormated = moment(dcr,"YYYY-MM-DD").subtract(20,'days');
-
+  // const dateDcrMaxExtra = moment(nowFormated).add(20,'days');
+  const dateDcrMaxExtra=moment(nowFormated).add(20, 'days');
+  console.log('dateDcrMaxExtra',dateDcrMaxExtra);
   const diffDay = (moment(dateLimiteExtraFormated).diff(nowFormated, 'days'));
   const diffDayNotExtra = diffDay*-1;
 
@@ -65,7 +68,7 @@ function App() {
         </header>
         <section className="App-section">
           <article>
-            <p><em className="number">1</em><br />Je saisis sur la date  &nbsp;  
+            <p><em className="number">1</em><br />Je saisis la date (DCR) &nbsp;  
             
             <button className="modal-toggle" onClick={toggle}>
             ?
@@ -122,7 +125,7 @@ function App() {
                       <em className="number">2</em><br />                       
                       Réponse
                     </p>
-                    <div className="messageResult"> Mes &#339;ufs <span className='bold'>ne sont plus </span> extra-frais depuis {diffDayNotExtra===0 ? "aujourd'hui":''} {diffDayNotExtra===1 ? "hier":''} {diffDayNotExtra>1 ? diffDayNotExtra+" jours":''}</div>
+                    <div className="messageResult"> Mes &#339;ufs <span className='bold'>ne sont plus </span> extra-frais depuis {diffDayNotExtra===0 ? "aujourd'hui":''} {diffDayNotExtra===1 ? "hier":''} {diffDayNotExtra>1 ? diffDayNotExtra+" jours":''}.<br/>La DCR doit être supérieure au <Moment format="D MMM YYYY" className="date">{dateDcrMaxExtra}</Moment></div>
                   </div>
                 )
               }
@@ -131,6 +134,9 @@ function App() {
             {/* <p>Nous sommes le <Moment format="D MMM YYYY"></Moment> </p> */}
           </article>
         </section>
+        <footer>
+        Contacter le développeur : Carole Barbier
+        </footer>
          
               
       </div>      
