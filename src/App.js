@@ -51,6 +51,17 @@ function App() {
 
   const { isShowing, toggle } = useModal();
 
+  const Emoji = props => (
+    <span
+      className="emoji"
+      role="img"
+      aria-label={props.label ? props.label : ""}
+      aria-hidden={props.label ? "false" : "true"}
+    >
+      {props.symbol}
+    </span>
+  );
+
   useEffect(() => {
   if (moment(now).isBefore(dateLimiteExtra)) {
       setShowExtra(true)
@@ -58,6 +69,8 @@ function App() {
   
   setDateIsValid(moment(dcr,"YYYY-MM-DD", true).isValid())    
   }, [dcr])
+
+  
       
   return (
     
@@ -97,7 +110,7 @@ function App() {
                 locale="fr"                
                 placeholderText="Je saisis ici"
                 calendarStartDay={1}
-                dateFormat="dd/MM/yyyy"
+                dateFormat="dd/MM"
                 showDisabledMonthNavigation
                 disabledKeyboardNavigation
               />
@@ -113,7 +126,7 @@ function App() {
                         <em className="number">2</em><br />                       
                         Réponse
                       </p>
-                      <div className="messageResult"> ! Extra-frais du <br/><Moment format="D MMM YYYY" className="date">{datePonte}</Moment><br />au <Moment format="D MMM YYYY" className="date">{dateLimiteExtra}</Moment><br /> soit encore <span className="date">{diffDay+1}</span> jour(s)
+                      <div className="messageResult"> <Emoji label="smiling face with smiling eyes" symbol="😊"/> Ils sont Extra-frais du <br/><Moment format="D MMM" className="date">{datePonte}</Moment><br />au <Moment format="D MMM" className="date">{dateLimiteExtra}</Moment><br /> soit encore <span className="date">{diffDay+1}</span> jour(s)
                       </div>
                       
                     </div>
@@ -122,10 +135,10 @@ function App() {
                 return (
                   <div>
                     <p>
-                      <em className="number">2</em><br />                       
+                      <em className="number">2</em><br />                   
                       Réponse
                     </p>
-                    <div className="messageResult"> Mes &#339;ufs <span className='bold'>ne sont plus </span> extra-frais depuis {diffDayNotExtra===0 ? "aujourd'hui":''} {diffDayNotExtra===1 ? "hier":''} {diffDayNotExtra>1 ? diffDayNotExtra+" jours":''}.<br/>La DCR doit être supérieure au <Moment format="D MMM YYYY" className="date">{dateDcrMaxExtra}</Moment></div>
+                    <div className="messageResult"> <Emoji label="confused face" symbol="😕"/> Mes &#339;ufs <span className='bold'>ne sont plus </span> extra-frais depuis {diffDayNotExtra===0 ? "aujourd'hui":''} {diffDayNotExtra===1 ? "hier":''} {diffDayNotExtra>1 ? diffDayNotExtra+" jours":''}.<br/>La DCR doit être supérieure au <Moment format="D MMM" className="date">{dateDcrMaxExtra}</Moment>.</div>
                   </div>
                 )
               }
@@ -135,7 +148,8 @@ function App() {
           </article>
         </section>
         <footer>
-        Contacter le développeur : Carole Barbier
+        Contacter le développeur : <a href='https://carolebarbier.com' target="_blank" className='date'> Carole Barbier </a>
+        <Emoji label="speech balloon" symbol="💬"/>
         </footer>
          
               
