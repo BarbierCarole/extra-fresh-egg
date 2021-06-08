@@ -75,83 +75,84 @@ function App() {
   return (
     
       <div className="App">
-        <header className="App-header">
-          <img src={eggs} width="60%" />
-          <h1>Mes &#339;ufs sont-ils extra-frais ?</h1>
-        </header>
-        <section className="App-section">
-          <article>
-            <p><em className="number">1</em><br />Je saisis la date (DCR) &nbsp;  
-            
-            <button className="modal-toggle" onClick={toggle}>
-            ?
-            </button><br />
-            <Modal isShowing={isShowing} hide={toggle} />
-
-            écrite sur l'&#339;uf ou la boîte<br/><em className="arrow">↓</em></p>
-          </article>
-          <article>
-            <div>
-                       
-              {/* <DatePicker
-                selected={dcr}
-                onChange={(date) => setDcr(date)}
-                calendarContainer={MyContainer}
-                locale="fr"
-                inline
-                calendarStartDay={1}
-              /> */}
+        <div className="App-content">
+          <header className="App-header">
+            <img src={eggs} width="60%" />
+            <h1>Mes &#339;ufs sont-ils extra-frais ?</h1>
+          </header>
+          <section className="App-section">
+            <article>
+              <p><em className="number">1</em><br />Je saisis la date (DCR) &nbsp;  
               
-              <DatePicker
-                selected={dcr}
-                onChange={(date) => setDcr(date)}
-                minDate={new Date()}
-                maxDate={addDays(new Date(), 28)}
-                locale="fr"                
-                placeholderText="Je saisis ici"
-                calendarStartDay={1}
-                dateFormat="dd/MM"
-                showDisabledMonthNavigation
-                disabledKeyboardNavigation
-              />
-            
-            </div>                  
-            
-            {(() => {
-              if (dateIsValid) {
-                if(showExtra) {
+              <button className="modal-toggle" onClick={toggle}>
+              ?
+              </button><br />
+              <Modal isShowing={isShowing} hide={toggle} />
+
+              écrite sur l'&#339;uf ou la boîte<br/><em className="arrow">↓</em></p>
+            </article>
+            <article>
+              <div>
+                        
+                {/* <DatePicker
+                  selected={dcr}
+                  onChange={(date) => setDcr(date)}
+                  calendarContainer={MyContainer}
+                  locale="fr"
+                  inline
+                  calendarStartDay={1}
+                /> */}
+                
+                <DatePicker
+                  selected={dcr}
+                  onChange={(date) => setDcr(date)}
+                  minDate={new Date()}
+                  maxDate={addDays(new Date(), 28)}
+                  locale="fr"                
+                  placeholderText="Je saisis ici"
+                  calendarStartDay={1}
+                  dateFormat="dd/MM"
+                  showDisabledMonthNavigation
+                  disabledKeyboardNavigation
+                />
+              
+              </div>                  
+              
+              {(() => {
+                if (dateIsValid) {
+                  if(showExtra) {
+                    return (
+                      <div>
+                        <p>
+                          <em className="number">2</em><br />                       
+                          Réponse
+                        </p>
+                        <div className="messageResult"> <Emoji label="smiling face with smiling eyes" symbol="😊"/> Ils sont Extra-frais du <Moment format="D MMM" className="date">{datePonte}</Moment>au <Moment format="D MMM" className="date">{dateLimiteExtra}</Moment><br /> soit encore <span className="date">{diffDay+1}</span> jour(s)
+                        </div>
+                        
+                      </div>
+                    )
+                  }
                   return (
                     <div>
                       <p>
-                        <em className="number">2</em><br />                       
+                        <em className="number">2</em><br />                   
                         Réponse
                       </p>
-                      <div className="messageResult"> <Emoji label="smiling face with smiling eyes" symbol="😊"/> Ils sont Extra-frais du <br/><Moment format="D MMM" className="date">{datePonte}</Moment><br />au <Moment format="D MMM" className="date">{dateLimiteExtra}</Moment><br /> soit encore <span className="date">{diffDay+1}</span> jour(s)
-                      </div>
-                      
+                      <div className="messageResult"> <Emoji label="confused face" symbol="😕"/> Mes &#339;ufs <span className='bold'>ne sont plus </span> extra-frais depuis {diffDayNotExtra===0 ? "aujourd'hui":''} {diffDayNotExtra===1 ? "hier":''} {diffDayNotExtra>1 ? diffDayNotExtra+" jours":''}.<br/>La DCR doit être supérieure au <Moment format="D MMM" className="date">{dateDcrMaxExtra}</Moment>.</div>
                     </div>
                   )
                 }
-                return (
-                  <div>
-                    <p>
-                      <em className="number">2</em><br />                   
-                      Réponse
-                    </p>
-                    <div className="messageResult"> <Emoji label="confused face" symbol="😕"/> Mes &#339;ufs <span className='bold'>ne sont plus </span> extra-frais depuis {diffDayNotExtra===0 ? "aujourd'hui":''} {diffDayNotExtra===1 ? "hier":''} {diffDayNotExtra>1 ? diffDayNotExtra+" jours":''}.<br/>La DCR doit être supérieure au <Moment format="D MMM" className="date">{dateDcrMaxExtra}</Moment>.</div>
-                  </div>
-                )
-              }
-              })()} 
-          
-            {/* <p>Nous sommes le <Moment format="D MMM YYYY"></Moment> </p> */}
-          </article>
-        </section>
+                })()} 
+            
+              {/* <p>Nous sommes le <Moment format="D MMM YYYY"></Moment> </p> */}
+            </article>
+          </section>
+        </div>
         <footer>
         Contacter le développeur : <a href='https://carolebarbier.com' target="_blank" className='date'> Carole Barbier </a>
         <Emoji label="speech balloon" symbol="💬"/>
-        </footer>
-         
+        </footer>     
               
       </div>      
   );

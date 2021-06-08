@@ -11,10 +11,16 @@
   
 }
 
-.App-header, .App-section { 
+.App-content {
+  box-shadow: 5px 5px 15px 5px rgb(0 0 0 / 10%);
   width: 300px;
   background-color: #eeeeee;
 }
+
+/* .App-header, .App-section { 
+  width: 300px;
+  background-color: #eeeeee;
+} */
 
 /* -------- CB ---------
 */
