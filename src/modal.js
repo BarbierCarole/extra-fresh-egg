@@ -24,63 +24,127 @@ const Modal = ({ isShowing, hide }) =>
         </div>
 
         <style jsx="true">{`
-          .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 1040;
-            background-color: rgba(0, 0, 0, 0.5);
+         
+          @media (max-width: 999px) {
+            .modal-overlay {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100vw;
+              height: 100vh;
+              z-index: 1040;
+              background-color: rgba(0, 0, 0, 0.5);
+            }
+
+            .modal-wrapper {
+              position: fixed;
+              top: 0;
+              left: 0;
+              z-index: 1050;
+              width: 100%;
+              height: 100%;
+              overflow-x: hidden;
+              overflow-y: auto;
+              outline: 0;
+              display: flex;
+              align-items: center;
+            }
+
+            .modal {
+              z-index: 100;
+              background: #e7decd;
+              position: relative;
+              margin: auto;
+              border-radius: 5px;
+              max-width: 500px;
+              width: 90%;
+              padding: 1rem;
+            }
+
+            .modal-header {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+
+            .modal-close-button {
+              font-size: 1.8rem;
+              font-weight: 700;
+              color: #fff;
+              cursor: pointer;
+              border-radius: 20px;
+              width: 40px;
+              height: 40px;
+              background: #8F675D;
+            }
+            img {
+              width: 80%;
+            }
+          
           }
 
-          .modal-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1050;
-            width: 100%;
-            height: 100%;
-            overflow-x: hidden;
-            overflow-y: auto;
-            outline: 0;
-            display: flex;
-            align-items: center;
-          }
+          @media (min-width: 1000px) {
+            .modal-overlay {
+              position: fixed;
+              top: 30px;
+              left: auto;
+              right: auto;
+              width:280px;
+              height: 620px;
+              z-index: 1040;
+              background-color: rgba(0, 0, 0, 0.5);
+            }
+            .modal-wrapper {
+              position: fixed;
+              top: 200px;
+              left: auto;
+              right: auto;
+              padding-right: 20px
+              z-index: 1050;
+              width: 300px;
+              height: 300px;
+              overflow-x: hidden;
+              overflow-y: auto;
+              outline: 0;
+              display: flex;
+              align-items: center;
+            }
+            img {
+              width: 80%;
+            }
+            .modal {
+              z-index: 100;
+              background: #e7decd;
+              position: relative;
+              margin: auto;
+              border-radius: 5px;
+              max-width: 500px;
+              width: 90%;
+              padding: 1rem;
+              margin-right: 1.5rem;
+            }
 
-          .modal {
-            z-index: 100;
-            background: #e7decd;
-            position: relative;
-            margin: auto;
-            border-radius: 5px;
-            max-width: 500px;
-            width: 90%;
-            padding: 1rem;
-          }
+            .modal-header {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+            
+            .modal-close-button {
+              font-size: 1.8rem;
+              font-weight: 700;
+              color: #fff;
+              cursor: pointer;
+              border-radius: 20px;
+              width: 40px;
+              height: 40px;
+              background: #8F675D;
+            }
 
-          .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-          }
-
-          .modal-close-button {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #fff;
-            cursor: pointer;
-            border-radius: 20px;
-            width: 40px;
-            height: 40px;
-            background: #8F675D;
-          }
-          img {
-            width: 80%;
           }
         `}</style>
       </>,
-      document.body
+      document.getElementById('App-content')
     )
     : null;
 
