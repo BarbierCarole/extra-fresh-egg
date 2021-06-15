@@ -145,8 +145,8 @@ function App() {
           </div>
         <footer>
         <span className="note">(Faire rouler la molette de la souris au dessus du téléphone pour visualiser la suite)</span> <br />
-        Contacter le développeur : <a href='https://carolebarbier.com'  target="_blank" rel="noreferrer" className='date'> Carole Barbier </a>
-        <Emoji label="speech balloon" symbol="💬"/>
+        Contacter le développeur : <a href='https://carolebarbier.com'  target="_blank" rel="noreferrer" className='date'> Carole Barbier <Emoji label="speech balloon" symbol="💬"/></a>
+        
         </footer>     
               
       </div>      

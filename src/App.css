@@ -156,6 +156,7 @@ footer {
 }
 /* pour une meilleure présentation sur écran >1000px */
 @media (min-width: 1000px) {
+  
   .App-content-phone {
   width: 420px;
   height: 700px;
@@ -164,47 +165,59 @@ footer {
   background-position: center;
   /* margin-top: 10px; */
   
-}
-.App-centent-parent {
-  position: relative;
-  overflow: hidden;
-  width: 280px;
-  height: 600px;
-  margin: 50px 0px 0 70px;
+  }
+  .App-centent-parent {
+    position: relative;
+    overflow: hidden;
+    width: 280px;
+    height: 600px;
+    margin: 50px 0px 0 70px;
+    
+  }
+  .App-content {
+    position: absolute;
+    width: 300px;
+    height: 600px;
+    padding-right: 15px;  
+    overflow: auto;
+    background: none;
+    box-shadow: none;
+  }
+
+  h1 {
+    
+    font-size: calc(14px + 2vmin);  
+    margin: calc(10px + 2vmin);
+  }
+  h2 {
+
+    font-size: calc(8px + 2vmin);
+    margin: 0 calc(16px + 2vmin) calc(0px + 2vmin) calc(16px + 2vmin) ;
+  }
+  p {
   
-}
-.App-content {
-  position: absolute;
-  width: 300px;
-  height: 600px;
-  padding-right: 15px;  
-  overflow: auto;
-  background: none;
-  box-shadow: none;
+    font-size: calc(8px + 2vmin);
+  }
+
+  .note {
+    font-size: calc(8px + 1vmin);
+  }
+
+  footer {
+
+    margin:0;
+  }
+
 }
 
-h1 {
-  
-  font-size: calc(14px + 2vmin);  
-  margin: calc(10px + 2vmin);
-}
-h2 {
-
-  font-size: calc(8px + 2vmin);
-  margin: 0 calc(16px + 2vmin) calc(0px + 2vmin) calc(16px + 2vmin) ;
-}
-p {
- 
-  font-size: calc(8px + 2vmin);
-}
-
-.note {
-  font-size: calc(8px + 1vmin);
-}
-
-footer {
-
-  margin:0;
-}
-
+@media (min-width: 1900px) {
+  .App {
+    justify-content: start;
+  }
+  .messageResult {
+    font-size: calc(16px + 1vmin);
+  }
+  input {
+    font-size: calc(16px + 1vmin);
+  }
 }
