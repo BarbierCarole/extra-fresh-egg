@@ -148,6 +148,7 @@ input {
   position: relative;
 }
 .react-datepicker-popper {
+  transition: 180ms box-shadow ease-in-out;
   box-shadow: 0px 0px 0px 1000px rgb(95 95 95 / 20%);
 }
 
