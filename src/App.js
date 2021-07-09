@@ -85,7 +85,7 @@ function App() {
               </header>
               <section className="App-section">
                 <article>
-                  <p><em className="number">1</em><br />Je saisis la date (DCR) &nbsp;  
+                  <p>Je saisis la date (DCR) &nbsp;  
                   
                   <button className="modal-toggle" onClick={toggle}>
                   ?
@@ -115,10 +115,7 @@ function App() {
                       if(showExtra) {
                         return (
                           <div>
-                            <p>
-                              <em className="number">2</em><br />                       
-                              Réponse
-                            </p>
+                            <p>Réponse</p>
                             <div className="messageResult"> <Emoji label="smiling face with smiling eyes" symbol="😊"/> Ils sont Extra-frais du <Moment format="D MMM" className="date">{datePonte}</Moment>au <Moment format="D MMM" className="date">{dateLimiteExtra}</Moment><br /> soit encore <span className="date">{diffDay+1}</span> jour(s)
                             </div>
                             
