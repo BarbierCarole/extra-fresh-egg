@@ -116,7 +116,7 @@ function App() {
                         return (
                           <div>
                             <p>Réponse</p>
-                            <div className="messageResult"> <Emoji label="smiling face with smiling eyes" symbol="😊"/> Ils sont Extra-frais du <Moment format="D MMM" className="date">{datePonte}</Moment>au <Moment format="D MMM" className="date">{dateLimiteExtra}</Moment><br /> soit encore <span className="date">{diffDay+1}</span> jour(s)
+                            <div className="messageResult"> <Emoji label="smiling face with smiling eyes" symbol="😊"/> Ils sont extra-frais du <Moment format="D MMMM" className="date">{datePonte}</Moment> au <Moment format="D MMMM" className="date">{dateLimiteExtra}</Moment><br /> soit encore <span className="date">{diffDay+1}</span> jour(s)
                             </div>
                             
                           </div>
@@ -124,11 +124,8 @@ function App() {
                       }
                       return (
                         <div>
-                          <p>
-                            <em className="number">2</em><br />                   
-                            Réponse
-                          </p>
-                          <div className="messageResult"> <Emoji label="confused face" symbol="😕"/> Mes &#339;ufs <span className='bold'>ne sont plus </span> extra-frais depuis {diffDayNotExtra===0 ? "aujourd'hui":''} {diffDayNotExtra===1 ? "hier":''} {diffDayNotExtra>1 ? diffDayNotExtra+" jours":''}.<br/>La DCR doit être supérieure au <Moment format="D MMM" className="date">{dateDcrMaxExtra}</Moment>.</div>
+                          <p>Réponse</p>
+                          <div className="messageResult"> <Emoji label="confused face" symbol="😕"/> Mes &#339;ufs <span className='bold'>ne sont plus </span> extra-frais depuis {diffDayNotExtra===0 ? "aujourd'hui":''} {diffDayNotExtra===1 ? "hier":''} {diffDayNotExtra>1 ? diffDayNotExtra+" jours":''}.<br/>La DCR doit être supérieure au <Moment format="D MMMM" className="date">{dateDcrMaxExtra}</Moment>.</div>
                         </div>
                       )
                     }
