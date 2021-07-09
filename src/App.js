@@ -92,7 +92,7 @@ function App() {
                   </button><br />
                   <Modal isShowing={isShowing} hide={toggle} className="modal"/>
 
-                  écrite sur l'&#339;uf ou la boîte<br/><em className="arrow">↓</em></p>
+                  écrite sur l'&#339;uf ou la boîte</p>
                 </article>
                 <article>
                   <div>
