@@ -9,3 +9,6 @@ Quelques exemples culinaires à base d'oeufs extra-frais : tartare de boeuf, car
 
 Et bien non et pas toujours envie, le temps, la tête de calculer sa date de fraîcheur au magasin. 
 Et c'est là que Mon Oeuf Extra Frais entre en jeu.
+
+## Visualisation du projet
+![https://github.com/BarbierCarole/extra-fresh-egg/blob/main/public/presentation-projet-monoeufextrafrais-CaroleBarbier.jpg](https://github.com/BarbierCarole/extra-fresh-egg/blob/main/public/presentation-projet-monoeufextrafrais-CaroleBarbier.jpg)
