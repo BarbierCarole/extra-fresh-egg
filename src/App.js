@@ -35,11 +35,11 @@ function App() {
 
  
   const datePonte = moment(dcr).subtract(28,'days');
-  const dateLimiteExtra = moment(dcr).subtract(21,'days');
+  const dateLimiteExtra = moment(dcr).subtract(20,'days');
 
   const nowFormated= moment(now,"YYYY-MM-DD");
-  const dateLimiteExtraFormated = moment(dcr,"YYYY-MM-DD").subtract(21,'days');
-  const dateDcrMaxExtra=moment(nowFormated).add(21, 'days');
+  const dateLimiteExtraFormated = moment(dcr,"YYYY-MM-DD").subtract(20,'days');
+  const dateDcrMaxExtra=moment(nowFormated).add(20, 'days');
   console.log('dateDcrMaxExtra',dateDcrMaxExtra);
   const diffDay = (moment(dateLimiteExtraFormated).diff(nowFormated, 'days'));
   const diffDayNotExtra = diffDay*-1;
